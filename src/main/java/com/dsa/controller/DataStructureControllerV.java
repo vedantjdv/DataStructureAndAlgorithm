@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dsa.constant.DsaAlgoConstants;
@@ -29,6 +30,27 @@ public class DataStructureControllerV {
 		CommonResponse commonResponse = new CommonResponse(HttpStatus.OK.value(), DsaAlgoConstants.SUCCESS, dataStructureServiceV.ping());
 		
 		logger.info("Entry in ping");
+		return commonResponse;
+	}
+
+	@GetMapping("/sortingAlgo")
+	public CommonResponse sortingAlgo(@RequestParam String sortingAlgo,@RequestParam int[] arr) throws Exception {
+		logger.info("Entry in sortingAlgo");
+		CommonResponse commonResponse= null;
+		switch (sortingAlgo) {
+			case "bubbleSort":
+				commonResponse = new CommonResponse(HttpStatus.OK.value(), DsaAlgoConstants.SUCCESS, dataStructureServiceV.bubbleSort(arr));				
+				break;
+			case "selectionSort":
+				commonResponse = new CommonResponse(HttpStatus.OK.value(), DsaAlgoConstants.SUCCESS, dataStructureServiceV.selectionSort(arr));
+				break;
+			case "mergeSort":
+				commonResponse = new CommonResponse(HttpStatus.OK.value(), DsaAlgoConstants.SUCCESS, dataStructureServiceV.mergeSort(arr));
+				break;
+			default:
+				break;
+		}
+		logger.info("Exit from sortingAlgo");	
 		return commonResponse;
 	}
 }
