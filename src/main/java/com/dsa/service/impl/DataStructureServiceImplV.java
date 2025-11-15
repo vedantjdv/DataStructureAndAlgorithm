@@ -9,6 +9,12 @@ public class DataStructureServiceImplV implements DataStructureServiceV {
 
 	@Override
 	public String ping() throws Exception {
+		// int[] arr = { 1,2,7,3,8,4};
+		// quickSort(arr);
+		// for(int i=0;i<arr.length;i++)
+		// {
+		// 	System.out.println(arr[i]);
+		// }
 		return "success";
 	}
 
@@ -96,4 +102,34 @@ public class DataStructureServiceImplV implements DataStructureServiceV {
 			arr[k++]=right[j++];
 		}
 	}
+
+	@Override
+	public int[] quickSort(int[] arr) throws Exception{
+		quickSortRecursion(arr,0,arr.length-1);
+		return arr;
+	}
+
+	private void quickSortRecursion(int[] arr,int low,int high){
+		if (low >= high) return;
+			int pivot = arr[high];
+			int i = low-1;
+			for(int j=low;j<high;j++)
+			{
+				if(arr[j]<=pivot)
+				{
+					i++;
+					int temp = arr[i];
+					arr[i]=arr[j];
+					arr[j]=temp;
+				}
+			}
+			int temp = arr[i 	+ 1];
+            arr[i + 1] = arr[high];
+            arr[high] = temp;
+			int p = i+1;
+			quickSortRecursion(arr, low, p - 1);
+			quickSortRecursion(arr, p+1,high);
+		
+	}
+
 }

@@ -47,6 +47,8 @@ public class DataStructureControllerV {
 			case "mergeSort":
 				commonResponse = new CommonResponse(HttpStatus.OK.value(), DsaAlgoConstants.SUCCESS, dataStructureServiceV.mergeSort(arr));
 				break;
+			case "quickSort":
+				commonResponse = new CommonResponse(HttpStatus.OK.value(), DsaAlgoConstants.SUCCESS, dataStructureServiceV.quickSort(arr));
 			default:
 				break;
 		}
