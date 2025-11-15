@@ -10,4 +10,6 @@ public interface DataStructureServiceV {
 
 	public int[] mergeSort(int[] arr) throws Exception;
 
+	public int[] quickSort(int[] arr) throws Exception;
+
 }
