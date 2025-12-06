@@ -9,7 +9,8 @@ public class DataStructureServiceImplV implements DataStructureServiceV {
 
 	@Override
 	public String ping() throws Exception {
-		int[] arr = {1,2,3,4,7,8};
+		int[] arr = {7,1,2,3,4,5,6};
+		//System.out.println(binarySearchInRotatedArray(arr, 7));
 		// System.out.println(binarySearch(arr,3));
 		// for(int i=0;i<arr.length;i++)
 		// {
@@ -150,6 +151,37 @@ public class DataStructureServiceImplV implements DataStructureServiceV {
 			}
 			else
 				right = mid-1;
+		}
+		return -1;
+	}
+
+	public int binarySearchInRotatedArray(int[] arr,int searchNum) throws Exception{
+		int left = 0;
+		int right = arr.length-1;
+		
+		while(left<=right)
+		{	int mid = left + (right - left) / 2;
+			if(arr[mid] == searchNum) return mid;
+			if(arr[left]<=arr[mid])
+			{
+				if(arr[left]<=searchNum && searchNum < arr[mid])
+				{
+					right = mid-1;
+				}
+				else{
+					left = mid+1;
+				}
+			}
+			else 
+			{ 
+				if(arr[mid]<searchNum && searchNum <= arr[right])
+				{
+					left = mid+1;
+				}
+				else{
+					right = mid-1;
+				}
+			}
 		}
 		return -1;
 	}
